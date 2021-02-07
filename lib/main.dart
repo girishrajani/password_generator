@@ -24,6 +24,7 @@ class _PassWordGenState extends State<PassWordGen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[900],
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.redAccent,
@@ -39,20 +40,35 @@ class _PassWordGenState extends State<PassWordGen> {
           CheckboxListTile(
             value: _lower,
             controlAffinity: ListTileControlAffinity.leading,
-            title: Text('Lowercase'),
-            secondary: Icon(CupertinoIcons.info),
+            title: Text(
+              'Lowercase',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            secondary: Icon(
+              CupertinoIcons.info,
+              color: Colors.white,
+            ),
             onChanged: (bool value) {
               setState(() {
                 _lower = value;
               });
             },
             activeColor: Colors.redAccent,
+            checkColor: Colors.white,
           ),
           CheckboxListTile(
             value: _upper,
             controlAffinity: ListTileControlAffinity.leading,
-            title: Text('UpperCase'),
-            secondary: Icon(CupertinoIcons.italic),
+            title: Text(
+              'UpperCase',
+              style: TextStyle(color: Colors.white),
+            ),
+            secondary: Icon(
+              CupertinoIcons.italic,
+              color: Colors.white,
+            ),
             onChanged: (bool value) {
               setState(() {
                 _upper = value;
@@ -61,8 +77,16 @@ class _PassWordGenState extends State<PassWordGen> {
             activeColor: Colors.redAccent,
           ),
           CheckboxListTile(
-            title: Text('Special Characters'),
-            secondary: Icon(CupertinoIcons.money_dollar),
+            title: Text(
+              'Special Characters',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            secondary: Icon(
+              CupertinoIcons.money_dollar,
+              color: Colors.white,
+            ),
             value: _char,
             controlAffinity: ListTileControlAffinity.leading,
             onChanged: (bool value) {
@@ -75,8 +99,16 @@ class _PassWordGenState extends State<PassWordGen> {
           CheckboxListTile(
             value: _num,
             controlAffinity: ListTileControlAffinity.leading,
-            title: Text('Numbers'),
-            secondary: Icon(CupertinoIcons.number_circle),
+            title: Text(
+              'Numbers',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            secondary: Icon(
+              CupertinoIcons.number_circle,
+              color: Colors.white,
+            ),
             onChanged: (bool value) {
               setState(() {
                 _num = value;
@@ -85,7 +117,10 @@ class _PassWordGenState extends State<PassWordGen> {
             activeColor: Colors.redAccent,
           ),
           ListTile(
-            title: Text('Length'),
+            title: Text(
+              'Length',
+              style: TextStyle(color: Colors.white),
+            ),
           ),
           Slider(
             value: _len,
@@ -101,6 +136,16 @@ class _PassWordGenState extends State<PassWordGen> {
             },
             activeColor: Colors.redAccent,
             inactiveColor: Colors.grey[900],
+          ),
+          Center(
+            child: RaisedButton(
+              onPressed: () {},
+              color: Colors.redAccent,
+              child: Text(
+                'Generate',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
           ),
         ],
       ),
