@@ -19,6 +19,8 @@ class _PassWordGenState extends State<PassWordGen> {
   var _num = false;
   var _lower = false;
   var _upper = false;
+  var _len = 11.0;
+  var length;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,6 +83,24 @@ class _PassWordGenState extends State<PassWordGen> {
               });
             },
             activeColor: Colors.redAccent,
+          ),
+          ListTile(
+            title: Text('Length'),
+          ),
+          Slider(
+            value: _len,
+            min: 8,
+            max: 25,
+            label: _len.round().toString(),
+            divisions: 5,
+            onChanged: (double value) {
+              setState(() {
+                _len = value;
+                length = value.round;
+              });
+            },
+            activeColor: Colors.redAccent,
+            inactiveColor: Colors.grey[900],
           ),
         ],
       ),
