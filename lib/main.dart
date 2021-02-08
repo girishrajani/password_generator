@@ -1,6 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+var _char = false;
+var _num = false;
+var _lower = false;
+var _upper = false;
+var _len = 11.0;
+var length;
 void main() {
   runApp(
     MaterialApp(
@@ -15,12 +21,6 @@ class PassWordGen extends StatefulWidget {
 }
 
 class _PassWordGenState extends State<PassWordGen> {
-  var _char = false;
-  var _num = false;
-  var _lower = false;
-  var _upper = false;
-  var _len = 11.0;
-  var length;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -139,7 +139,12 @@ class _PassWordGenState extends State<PassWordGen> {
           ),
           Center(
             child: RaisedButton(
-              onPressed: () {},
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) => _buildPopupDialog(context),
+                );
+              },
               color: Colors.redAccent,
               child: Text(
                 'Generate',
@@ -149,6 +154,73 @@ class _PassWordGenState extends State<PassWordGen> {
           ),
         ],
       ),
+    );
+  }
+}
+
+Widget _buildPopupDialog(BuildContext context) {
+  if (_char == false && _lower == false && _upper == false && _num == false) {
+    return AlertDialog(
+      backgroundColor: Colors.grey[900],
+      title: Text(
+        'Error',
+        style: TextStyle(
+          color: Colors.white,
+        ),
+      ),
+      content: Text(
+        'Select at least one option.',
+        style: TextStyle(
+          color: Colors.white,
+        ),
+      ),
+      actions: <Widget>[
+        FlatButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: Text(
+            'Ok',
+            style: TextStyle(color: Colors.redAccent),
+          ),
+        )
+      ],
+    );
+  } else {
+    return AlertDialog(
+      backgroundColor: Colors.grey[900],
+      title: Text(
+        'Your Password',
+        style: TextStyle(
+          color: Colors.white,
+        ),
+      ),
+      content: Text(
+        'Password',
+        style: TextStyle(
+          color: Colors.white,
+        ),
+      ),
+      actions: <Widget>[
+        FlatButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: Text(
+            'Ok',
+            style: TextStyle(color: Colors.redAccent),
+          ),
+        ),
+        FlatButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: Text(
+            'Copy to Clipboard',
+            style: TextStyle(color: Colors.redAccent),
+          ),
+        ),
+      ],
     );
   }
 }
